@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>العد التنازلي لبدء المدرسة</title>
+
+  <!-- كسر الكاش مؤقتًا لضمان تحميل النسخة الجديدة -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
@@ -26,25 +32,28 @@
     h1{font-size:2.5rem;color:#FFD700;margin-bottom:10px}
     h2{font-size:1.3rem;color:#4DFF4D;margin-bottom:15px}
 
-    /* صورة مجتبى – إطار ثابت بدون دوران + توهّج ناعم */
+    /* صورة مجتبى – إطار ثابت مع توهّج */
     .avatar{
       position:relative;width:180px;height:180px;margin:0 auto 20px;border-radius:50%;padding:5px;
-      /* إطار متدرّج ثابت (لا يوجد أي animation: spin هنا) */
       background:radial-gradient(circle at center,#FFD700,#FF2070,#4DFF4D);
-      /* توهّج لطيف فقط */
       box-shadow:0 0 15px rgba(255,215,0,0.7),0 0 30px rgba(255,32,112,0.5);
-      animation:glow 3s ease-in-out infinite;
-      transform:none !important; /* يضمن عدم وجود أي دوران قديم */
+      animation:glow 3s ease-in-out infinite !important;
+      transform:none !important;
     }
     .avatar img{
       width:100%;height:100%;border-radius:50%;object-fit:cover;
-      border:5px solid rgba(0,0,0,0.6)
+      border:5px solid rgba(0,0,0,0.6);
+      animation:none !important;
+      transform:none !important;
     }
     @keyframes glow{
       0%   { box-shadow:0 0 10px rgba(255,215,0,0.4),0 0 20px rgba(255,32,112,0.3); }
       50%  { box-shadow:0 0 25px rgba(255,215,0,0.8),0 0 50px rgba(255,32,112,0.6); }
       100% { box-shadow:0 0 10px rgba(255,215,0,0.4),0 0 20px rgba(255,32,112,0.3); }
     }
+
+    /* تعطيل أي دوران قديم بالاسم spin */
+    @keyframes spin { from{} to{} }
 
     .remaining-days{font-weight:700;margin-bottom:15px}
     .to-name{margin:10px 0 15px;font-size:1.2rem;color:#FFEB3B;font-weight:700}
@@ -55,11 +64,6 @@
     .message{margin-top:20px;font-size:1.2rem;background:linear-gradient(90deg,#FF8A00,#FF2070);
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
     .footer{margin-top:20px;font-size:1rem;color:rgba(255,255,255,.8)}
-
-    /* (اختياري) لمن يفضّل تقليل الحركة */
-    @media (prefers-reduced-motion: reduce) {
-      *{animation:none !important;transition:none !important}
-    }
   </style>
 </head>
 <body>
@@ -87,9 +91,7 @@
   </div>
 
   <script>
-    // تاريخ بداية المدرسة: 3 سبتمبر 2025 (مفسَّر محليًا)
     const schoolStartDate = new Date(2025, 8, 3, 0, 0, 0);
-
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
@@ -97,7 +99,6 @@
     const msgEl = document.getElementById('message');
     const remainingEl = document.getElementById('remaining-days');
 
-    // تصريف كلمة "يوم" بالعربية
     function dayWord(n){
       if (n === 0) return "اليوم";
       if (n === 1) return "يوم";
