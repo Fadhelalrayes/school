@@ -26,11 +26,11 @@
     h1{font-size:2.5rem;color:#FFD700;margin-bottom:10px}
     h2{font-size:1.3rem;color:#4DFF4D;margin-bottom:15px}
 
-    /* صورة مجتبى مع توهّج */
+    /* صورة مجتبى بإطار ثابت مع توهّج */
     .avatar{
       position:relative;width:180px;height:180px;margin:0 auto 20px;border-radius:50%;padding:5px;
-      background:conic-gradient(#4DFF4D,#FFD700,#FF2070);
-      box-shadow:0 0 20px rgba(255,215,0,0.6),0 0 40px rgba(255,32,112,0.4);
+      background:radial-gradient(circle at center,#FFD700,#FF2070,#4DFF4D);
+      box-shadow:0 0 15px rgba(255,215,0,0.7),0 0 30px rgba(255,32,112,0.5);
       animation:glow 3s ease-in-out infinite;
     }
     .avatar img{
@@ -63,7 +63,6 @@
     <div id="avatar-border" class="avatar">
       <img src="https://i.postimg.cc/k4RcK8hY/1000325507.png" alt="مجتبى الريس" />
     </div>
-    <!-- السطر الجديد -->
     <div id="remaining-days" class="remaining-days">الأيام المتبقية: —</div>
 
     <div class="to-name">📌 صفحة مخصصة إلى <b>مجتبى الريس</b></div>
@@ -80,16 +79,14 @@
   </div>
 
   <script>
-    const schoolStartDate = new Date(2025, 8, 3, 0, 0, 0); // 3 سبتمبر 2025
+    const schoolStartDate = new Date(2025, 8, 3, 0, 0, 0);
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
     const msgEl = document.getElementById('message');
-    const avatarBorder = document.getElementById('avatar-border');
     const remainingEl = document.getElementById('remaining-days');
 
-    // تصريف كلمة يوم بالعربي
     function dayWord(n){
       if (n === 0) return "اليوم";
       if (n === 1) return "يوم";
