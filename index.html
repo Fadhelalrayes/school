@@ -1,205 +1,130 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>العد التنازلي للعودة إلى المدرسة</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .container {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            max-width: 900px;
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: #FFD700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 40px;
-            color: #4DFF4D;
-            font-weight: 400;
-        }
-        
-        .countdown {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin: 40px 0;
-        }
-        
-        .countdown-box {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px 15px;
-            min-width: 140px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .countdown-box:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .countdown-value {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-        
-        .countdown-label {
-            font-size: 1.2rem;
-            color: #FFD700;
-        }
-        
-        .message {
-            margin-top: 40px;
-            font-size: 1.5rem;
-            line-height: 1.6;
-            background: linear-gradient(90deg, #FF8A00, #FF2070);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-        
-        .school-icon {
-            font-size: 4rem;
-            margin: 20px 0;
-            color: #4DFF4D;
-            text-shadow: 0 0 15px rgba(77, 255, 77, 0.7);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .footer {
-            margin-top: 40px;
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.4rem; }
-            .countdown-value { font-size: 2.5rem; }
-            .countdown-box { min-width: 110px; padding: 20px 10px; }
-            .container { padding: 25px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>العد التنازلي لبدء المدرسة</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+    body{
+      background:linear-gradient(135deg,#1a2a6c,#b21f1f,#fdbb2d);
+      background-size:400% 400%;
+      animation:gradientBG 15s ease infinite;
+      color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;
+      padding:20px;text-align:center
+    }
+    @keyframes gradientBG{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    .container{
+      background:rgba(0,0,0,.7);border-radius:25px;padding:30px;max-width:900px;width:100%;
+      backdrop-filter:blur(10px);box-shadow:0 15px 35px rgba(0,0,0,.5)
+    }
+    h1{font-size:2.5rem;color:#FFD700;margin-bottom:10px}
+    h2{font-size:1.3rem;color:#4DFF4D;margin-bottom:15px}
+
+    /* صورة مجتبى مع توهّج */
+    .avatar{
+      position:relative;width:180px;height:180px;margin:0 auto 20px;border-radius:50%;padding:5px;
+      background:conic-gradient(#4DFF4D,#FFD700,#FF2070);
+      box-shadow:0 0 20px rgba(255,215,0,0.6),0 0 40px rgba(255,32,112,0.4);
+      animation:glow 3s ease-in-out infinite;
+    }
+    .avatar img{
+      width:100%;height:100%;border-radius:50%;object-fit:cover;
+      border:5px solid rgba(0,0,0,0.6)
+    }
+    @keyframes glow{
+      0%   { box-shadow:0 0 10px rgba(255,215,0,0.4),0 0 20px rgba(255,32,112,0.3); }
+      50%  { box-shadow:0 0 25px rgba(255,215,0,0.8),0 0 50px rgba(255,32,112,0.6); }
+      100% { box-shadow:0 0 10px rgba(255,215,0,0.4),0 0 20px rgba(255,32,112,0.3); }
+    }
+
+    .remaining-days{font-weight:700;margin-bottom:15px}
+    .to-name{margin:10px 0 15px;font-size:1.2rem;color:#FFEB3B;font-weight:700}
+    .countdown{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin:25px 0}
+    .countdown-box{background:rgba(255,255,255,.1);border-radius:15px;padding:20px;min-width:110px}
+    .countdown-value{font-size:2.5rem;font-weight:900}
+    .countdown-label{font-size:1rem;color:#FFD700}
+    .message{margin-top:20px;font-size:1.2rem;background:linear-gradient(90deg,#FF8A00,#FF2070);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+    .footer{margin-top:20px;font-size:1rem;color:rgba(255,255,255,.8)}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>العد التنازلي لبدء المدرسة</h1>
-        <h2>الأربعاء 3 سبتمبر 2025</h2>
-        
-        <div class="school-icon">🎓</div>
-        
-        <div class="countdown">
-            <div class="countdown-box">
-                <div id="days" class="countdown-value">00</div>
-                <div class="countdown-label">أيام</div>
-            </div>
-            <div class="countdown-box">
-                <div id="hours" class="countdown-value">00</div>
-                <div class="countdown-label">ساعات</div>
-            </div>
-            <div class="countdown-box">
-                <div id="minutes" class="countdown-value">00</div>
-                <div class="countdown-label">دقائق</div>
-            </div>
-            <div class="countdown-box">
-                <div id="seconds" class="countdown-value">00</div>
-                <div class="countdown-label">ثواني</div>
-            </div>
-        </div>
-        
-        <div class="message">
-            استمتع بعطلتك الصيفية واستعد لرحلة تعلم جديدة مليئة بالإنجازات!
-        </div>
-        
-        <div class="footer">
-            كل لحظة تمر تقربنا من بداية فصل دراسي جديد مليء بالإنجازات
-        </div>
+  <div class="container">
+    <h1>العد التنازلي لبدء المدرسة</h1>
+    <h2>الأربعاء 3 سبتمبر 2025</h2>
+
+    <!-- صورة مجتبى -->
+    <div id="avatar-border" class="avatar">
+      <img src="https://i.postimg.cc/k4RcK8hY/1000325507.png" alt="مجتبى الريس" />
+    </div>
+    <!-- السطر الجديد -->
+    <div id="remaining-days" class="remaining-days">الأيام المتبقية: —</div>
+
+    <div class="to-name">📌 صفحة مخصصة إلى <b>مجتبى الريس</b></div>
+
+    <div class="countdown">
+      <div class="countdown-box"><div id="days" class="countdown-value">00</div><div class="countdown-label">أيام</div></div>
+      <div class="countdown-box"><div id="hours" class="countdown-value">00</div><div class="countdown-label">ساعات</div></div>
+      <div class="countdown-box"><div id="minutes" class="countdown-value">00</div><div class="countdown-label">دقائق</div></div>
+      <div class="countdown-box"><div id="seconds" class="countdown-value">00</div><div class="countdown-label">ثواني</div></div>
     </div>
 
-    <script>
-        // تاريخ بداية المدرسة: 3 سبتمبر 2025
-        const schoolStartDate = new Date('2025-09-03T00:00:00');
-        
-        function updateCountdown() {
-            const now = new Date();
-            const difference = schoolStartDate - now;
-            
-            if (difference <= 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                return;
-            }
-            
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        // تحديث العد التنازلي كل ثانية
-        setInterval(updateCountdown, 1000);
-        
-        // التحديث الأول عند تحميل الصفحة
-        updateCountdown();
-    </script>
+    <div id="message" class="message">استمتع بعطلتك الصيفية واستعد لرحلة تعلم جديدة 🌟</div>
+    <div class="footer">كل لحظة تمر تقربنا من بداية فصل دراسي جديد</div>
+  </div>
+
+  <script>
+    const schoolStartDate = new Date(2025, 8, 3, 0, 0, 0); // 3 سبتمبر 2025
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const msgEl = document.getElementById('message');
+    const avatarBorder = document.getElementById('avatar-border');
+    const remainingEl = document.getElementById('remaining-days');
+
+    // تصريف كلمة يوم بالعربي
+    function dayWord(n){
+      if (n === 0) return "اليوم";
+      if (n === 1) return "يوم";
+      if (n === 2) return "يومان";
+      if (n >= 3 && n <= 10) return "أيام";
+      return "يوماً";
+    }
+
+    function updateCountdown(){
+      const now = new Date();
+      const diff = schoolStartDate - now;
+
+      if (diff <= 0) {
+        daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = "00";
+        msgEl.textContent = "🎉 حان وقت المدرسة! بالتوفيق يا مجتبى الريس 🙌";
+        remainingEl.textContent = "اليوم يوم المدرسة! 🎒";
+        clearInterval(timer);
+        return;
+      }
+
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const s = Math.floor((diff % (1000*60)) / 1000);
+
+      daysEl.textContent    = d.toString().padStart(2,'0');
+      hoursEl.textContent   = h.toString().padStart(2,'0');
+      minutesEl.textContent = m.toString().padStart(2,'0');
+      secondsEl.textContent = s.toString().padStart(2,'0');
+
+      remainingEl.textContent = `الأيام المتبقية: ${d} ${dayWord(d)}`;
+    }
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
