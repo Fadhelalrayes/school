@@ -1,139 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>العد التنازلي لبدء المدرسة</title>
-
-  <!-- كسر الكاش مؤقتًا لضمان تحميل النسخة الجديدة -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مدار الخبر | متجددة لحظة بلحظة</title>
+  <meta name="description" content="مدار الخبر — صفحة أخبار عربية متجددة لحظة بلحظة بدون روابط أو أسماء وكالات.">
+  <meta name="theme-color" content="#0ea5e9">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
-    body{
-      background:linear-gradient(135deg,#1a2a6c,#b21f1f,#fdbb2d);
-      background-size:400% 400%;
-      animation:gradientBG 15s ease infinite;
-      color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;
-      padding:20px;text-align:center
-    }
-    @keyframes gradientBG{
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-    }
-    .container{
-      background:rgba(0,0,0,.7);border-radius:25px;padding:30px;max-width:900px;width:100%;
-      backdrop-filter:blur(10px);box-shadow:0 15px 35px rgba(0,0,0,.5)
-    }
-    h1{font-size:2.5rem;color:#FFD700;margin-bottom:10px}
-    h2{font-size:1.3rem;color:#4DFF4D;margin-bottom:15px}
-
-    /* صورة مجتبى – إطار ثابت مع توهّج */
-    .avatar{
-      position:relative;width:180px;height:180px;margin:0 auto 20px;border-radius:50%;padding:5px;
-      background:radial-gradient(circle at center,#FFD700,#FF2070,#4DFF4D);
-      box-shadow:0 0 15px rgba(255,215,0,0.7),0 0 30px rgba(255,32,112,0.5);
-      animation:glow 3s ease-in-out infinite !important;
-      transform:none !important;
-    }
-    .avatar img{
-      width:100%;height:100%;border-radius:50%;object-fit:cover;
-      border:5px solid rgba(0,0,0,0.6);
-      animation:none !important;
-      transform:none !important;
-    }
-    @keyframes glow{
-      0%   { box-shadow:0 0 10px rgba(255,215,0,0.4),0 0 20px rgba(255,32,112,0.3); }
-      50%  { box-shadow:0 0 25px rgba(255,215,0,0.8),0 0 50px rgba(255,32,112,0.6); }
-      100% { box-shadow:0 0 10px rgba(255,215,0,0.4),0 0 20px rgba(255,32,112,0.3); }
-    }
-
-    /* تعطيل أي دوران قديم بالاسم spin */
-    @keyframes spin { from{} to{} }
-
-    .remaining-days{font-weight:700;margin-bottom:15px}
-    .to-name{margin:10px 0 15px;font-size:1.2rem;color:#FFEB3B;font-weight:700}
-    .countdown{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin:25px 0}
-    .countdown-box{background:rgba(255,255,255,.1);border-radius:15px;padding:20px;min-width:110px}
-    .countdown-value{font-size:2.5rem;font-weight:900}
-    .countdown-label{font-size:1rem;color:#FFD700}
-    .message{margin-top:20px;font-size:1.2rem;background:linear-gradient(90deg,#FF8A00,#FF2070);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
-    .footer{margin-top:20px;font-size:1rem;color:rgba(255,255,255,.8)}
+    body{font-family:'Tajawal',system-ui,Arial,sans-serif;background:#f8fafc;color:#0f172a;line-height:1.9}
+    .article{background:#fff;padding:20px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+    .article h3{font-size:1.25rem;font-weight:800;margin-bottom:6px}
+    .article p{text-align:justify;font-size:1rem;margin-top:6px;white-space:pre-line}
+    .ticker{overflow:hidden;white-space:nowrap;background:#0ea5e9;color:#fff}
+    .ticker__track{display:inline-block;padding-left:100%;animation:marquee 26s linear infinite}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+    .clock{font-variant-numeric:tabular-nums}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>العد التنازلي لبدء المدرسة</h1>
-    <h2>الأربعاء 3 سبتمبر 2025</h2>
 
-    <!-- صورة مجتبى -->
-    <div id="avatar-border" class="avatar">
-      <img src="https://i.postimg.cc/k4RcK8hY/1000325507.png" alt="مجتبى الريس" />
+<!-- HEADER -->
+<header class="bg-white/90 backdrop-blur sticky top-0 z-50 border-b border-slate-100">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div style="width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#0ea5e9,#6366f1);box-shadow:0 6px 16px rgba(14,165,233,.35)"></div>
+      <div>
+        <div class="text-2xl font-extrabold bg-gradient-to-r from-sky-500 to-indigo-500 text-transparent bg-clip-text">مدار الخبر</div>
+        <div id="lastUpdated" class="text-xs text-slate-500">—</div>
+      </div>
     </div>
-    <div id="remaining-days" class="remaining-days">الأيام المتبقية: —</div>
+    <!-- ساعة صغيرة وأنيقة -->
+    <div class="clock text-sm px-2 py-1 rounded-lg bg-slate-100 text-slate-700" id="liveClock" aria-label="الوقت الآن">--:--:--</div>
+  </div>
+  <div class="ticker text-sm"><div class="ticker__track py-2" id="tickerTrack">مدار الخبر — أخبار عربية متجددة لحظة بلحظة…</div></div>
+</header>
 
-    <div class="to-name">📌 صفحة مخصصة إلى <b>مجتبى الريس</b></div>
-
-    <div class="countdown">
-      <div class="countdown-box"><div id="days" class="countdown-value">00</div><div class="countdown-label">أيام</div></div>
-      <div class="countdown-box"><div id="hours" class="countdown-value">00</div><div class="countdown-label">ساعات</div></div>
-      <div class="countdown-box"><div id="minutes" class="countdown-value">00</div><div class="countdown-label">دقائق</div></div>
-      <div class="countdown-box"><div id="seconds" class="countdown-value">00</div><div class="countdown-label">ثواني</div></div>
-    </div>
-
-    <div id="message" class="message">استمتع بعطلتك الصيفية واستعد لرحلة تعلم جديدة 🌟</div>
-    <div class="footer">كل لحظة تمر تقربنا من بداية فصل دراسي جديد</div>
+<!-- MAIN -->
+<main class="max-w-5xl mx-auto px-4 py-6">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-xl font-bold">آخر الأخبار (متجددة)</h2>
+    <div id="status" class="text-xs text-slate-500"></div>
   </div>
 
-  <script>
-    const schoolStartDate = new Date(2025, 8, 3, 0, 0, 0);
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-    const msgEl = document.getElementById('message');
-    const remainingEl = document.getElementById('remaining-days');
+  <div id="newsList" class="space-y-6"></div>
 
-    function dayWord(n){
-      if (n === 0) return "اليوم";
-      if (n === 1) return "يوم";
-      if (n === 2) return "يومان";
-      if (n >= 3 && n <= 10) return "أيام";
-      return "يوماً";
-    }
+  <div class="flex justify-center mt-6">
+    <button id="loadMore" class="px-5 py-2 rounded-xl bg-sky-600 text-white hover:bg-sky-700 disabled:opacity-50 disabled:cursor-not-allowed">
+      تحميل المزيد
+    </button>
+  </div>
+</main>
 
-    function updateCountdown(){
-      const now = new Date();
-      const diff = schoolStartDate - now;
+<!-- FOOTER -->
+<footer class="text-center py-10 text-sm text-slate-500">
+  © <span id="year"></span> مدار الخبر — جميع الحقوق محفوظة.
+</footer>
+<div class="text-center text-xs opacity-80 -mt-6 mb-8">
+  برمجة و تطوير : فاضل الريس
+</div>
 
-      if (diff <= 0) {
-        daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = "00";
-        msgEl.textContent = "🎉 حان وقت المدرسة! بالتوفيق يا مجتبى الريس 🙌";
-        remainingEl.textContent = "اليوم يوم المدرسة! 🎒";
-        clearInterval(timer);
-        return;
+<script>
+/* =================== الإعدادات =================== */
+// مصادر RSS (عامة + بحرينية)
+const FEEDS = [
+  // بحرينية
+  "https://feeds.feedburner.com/alayam-news-list-all",
+  "https://alwatannews.net/rssFeed/0",
+  "https://bahrainmirror.com/rss.xml",
+  // عربية عامة
+  "https://feeds.bbci.co.uk/arabic/rss.xml",
+  "https://www.france24.com/ar/rss",
+  "https://www.skynewsarabia.com/rss",
+  "https://arabic.cnn.com/rss",
+  "https://arabic.rt.com/rss/"
+];
+
+// بروكسيات لتجاوز CORS (نجربها بالتسلسل)
+const PROXIES = [
+  u => `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(u)}`, // JSON مباشر
+  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,           // XML خام
+  u => `https://r.jina.ai/http://r.jina.ai/${encodeURIComponent(u)}`            // احتياطي
+];
+
+// إعداد التحديث التلقائي (بالدقائق)
+const AUTO_REFRESH_MIN = 3;
+
+/* =================== أدوات مساعدة =================== */
+const $ = sel => document.querySelector(sel);
+const stripHtml = (h) => { const d = document.createElement("div"); d.innerHTML = h; return (d.textContent||"").trim(); };
+const hasAr = t => /[\u0600-\u06FF]/.test(t||"");
+function fmt(isoOrStr){
+  const d = new Date(isoOrStr);
+  if (isNaN(d)) return "";
+  return d.toLocaleString('ar-EG',{dateStyle:'medium',timeStyle:'short'});
+}
+
+/* =================== الساعة الحية =================== */
+function startClock(){
+  const el = $("#liveClock");
+  function tick(){
+    const now = new Date();
+    el.textContent = now.toLocaleTimeString('ar-BH', { hour12:false });
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+/* =================== جلب وتحليل =================== */
+async function fetchViaProxies(url){
+  for(const p of PROXIES){
+    try{
+      const endpoint = p(url);
+      const res = await fetch(endpoint, { cache: "no-store" });
+      if (!res.ok) continue;
+      // rss2json يرجّع JSON
+      if (endpoint.includes("rss2json")) {
+        const js = await res.json();
+        if (!js || !Array.isArray(js.items)) continue;
+        return js.items.map(it => ({
+          title: (it.title||"").trim(),
+          full: stripHtml((it.content||it.description||"").trim()),
+          time: it.pubDate || it.pubdate || ""
+        }));
       }
+      // غير ذلك: XML
+      const txt = await res.text();
+      const doc = new DOMParser().parseFromString(txt, "text/xml");
+      const arr = Array.from(doc.querySelectorAll("item,entry")).map(el => {
+        const title = (el.querySelector("title")?.textContent||"").trim();
+        const full = stripHtml(
+          (el.querySelector("content\\:encoded")?.textContent ||
+           el.querySelector("description")?.textContent       ||
+           el.querySelector("summary")?.textContent           || "").trim()
+        );
+        const pub  = (el.querySelector("pubDate")?.textContent || el.querySelector("updated")?.textContent || "").trim();
+        return { title, full, time: pub };
+      });
+      return arr;
+    }catch(e){ /* جرّب البروكسي التالي */ }
+  }
+  return [];
+}
 
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-      const s = Math.floor((diff % (1000*60)) / 1000);
+async function loadAllFeeds(){
+  const t0 = performance.now();
+  $("#status").textContent = "جارٍ التحديث…";
+  let all = [];
+  let ok = 0;
+  for (const f of FEEDS) {
+    const items = await fetchViaProxies(f);
+    if (items.length) ok++;
+    // فلترة عربية وإزالة فراغات
+    all.push(...items.filter(i => (hasAr(i.title) || hasAr(i.full))));
+  }
+  // إزالة التكرارات (عنوان + جزء من النص)
+  const seen = new Set(), uniq = [];
+  for (const it of all) {
+    const key = (it.title||"") + "|" + (it.full||"").slice(0,120);
+    if (seen.has(key)) continue;
+    seen.add(key); uniq.push(it);
+  }
+  // ترتيب: الأحدث أولاً (عند توافر التاريخ) وإلا حسب الطول
+  uniq.sort((a,b) => {
+    const ad = Date.parse(a.time||"") || 0;
+    const bd = Date.parse(b.time||"") || 0;
+    if (bd !== ad) return bd - ad;
+    return (b.full||"").length - (a.full||"").length;
+  });
 
-      daysEl.textContent    = d.toString().padStart(2,'0');
-      hoursEl.textContent   = h.toString().padStart(2,'0');
-      minutesEl.textContent = m.toString().padStart(2,'0');
-      secondsEl.textContent = s.toString().padStart(2,'0');
+  state.all = uniq;
+  state.page = 0;
+  render(true);
 
-      remainingEl.textContent = `الأيام المتبقية: ${d} ${dayWord(d)}`;
-    }
+  const ms = Math.round(performance.now() - t0);
+  $("#lastUpdated").textContent = `آخر تحديث: ${fmt(new Date())} • مصادر ناجحة: ${ok}/${FEEDS.length} • ~${ms}ms`;
+}
 
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-  </script>
+/* =================== العرض =================== */
+const state = { all: [], page: 0, pageSize: 12 };
+
+function articleHTML(a){
+  return `
+    <article class="article">
+      <h3>${a.title||""}</h3>
+      <div class="text-xs text-slate-500 mb-2">${a.time ? fmt(a.time) : ""}</div>
+      <p>${a.full||""}</p>
+    </article>`;
+}
+
+function render(reset=false){
+  if (reset) state.page = 0;
+  const end = (state.page + 1) * state.pageSize;
+  const slice = state.all.slice(0, end);
+  $("#newsList").innerHTML = slice.map(articleHTML).join("");
+  $("#loadMore").disabled = end >= state.all.length;
+  $("#loadMore").textContent = end >= state.all.length ? "لا مزيد من الأخبار" : "تحميل المزيد";
+  $("#tickerTrack").textContent = slice.slice(0, 12).map(x=>x.title).join(" • ") || "مدار الخبر — أخبار عربية متجددة لحظة بلحظة…";
+}
+
+/* =================== أحداث وتحديث دوري =================== */
+$("#loadMore").onclick = () => { state.page++; render(false); };
+$("#year").textContent = new Date().getFullYear();
+
+function startAutoRefresh(){
+  // تحديث تلقائي كل X دقائق
+  setInterval(loadAllFeeds, AUTO_REFRESH_MIN * 60 * 1000);
+}
+
+/* =================== تشغيل =================== */
+startClock();
+loadAllFeeds();
+startAutoRefresh();
+</script>
 </body>
 </html>
